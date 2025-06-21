@@ -1,0 +1,20 @@
+[Unit]
+Description=dump1090 ADS-B decoder
+After=network.target rc-local.service
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/lg/dump1090/dump1090 --net
+Restart=always
+RestartSec=5
+StartLimitInterval=60
+StartLimitBurst=3
+User=lg
+Group=lg
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=dump1090
+
+[Install]
+WantedBy=multi-user.target
