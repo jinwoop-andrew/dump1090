@@ -5,15 +5,14 @@ Wants=network.target
 
 [Service]
 Type=simple
-ExecStart=/home/lg/dump1090/dump1090 --net
+ExecStart=/usr/local/bin/dump1090 --net
 Restart=always
 RestartSec=5
-StartLimitInterval=60
-StartLimitBurst=3
-User=lg
-Group=lg
-StandardOutput=journal
-StandardError=journal
+User=root
+Group=root
+WorkingDirectory=/usr/local/bin
+StandardOutput=append:/var/log/dump1090.log
+StandardError=append:/var/log/dump1090.log
 SyslogIdentifier=dump1090
 
 [Install]

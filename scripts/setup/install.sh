@@ -12,21 +12,24 @@ popd
 ## adsbhub.sh
 sudo cp adsbhub.sh /usr/local/bin/
 
+# Setup logrotate first
+./logrotate.sh
+
 # Copy service files to systemd directory
 sudo cp service_files/dump1090.service /etc/systemd/system/
 sudo cp service_files/adsbhub.service /etc/systemd/system/
 
 # Reload systemd configuration
-sudo systemctl daemon-reload
+systemctl daemon-reload
 
 # Enable services to start at boot
-sudo systemctl enable dump1090.service
-sudo systemctl enable adsbhub.service
+systemctl enable dump1090.service
+systemctl enable adsbhub.service
 
 # Start services manually (or reboot)
-sudo systemctl start dump1090.service
-sudo systemctl start adsbhub.service
+systemctl start dump1090.service
+systemctl start adsbhub.service
 
 # Check status
-sudo systemctl status dump1090.service
-sudo systemctl status adsbhub.service
+systemctl status dump1090.service
+systemctl status adsbhub.service

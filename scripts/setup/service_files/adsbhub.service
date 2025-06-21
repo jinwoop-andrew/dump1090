@@ -9,13 +9,11 @@ Type=simple
 ExecStart=/usr/local/bin/adsbhub.sh
 Restart=always
 RestartSec=5
-StartLimitInterval=60
-StartLimitBurst=3
-User=lg
-Group=lg
+User=root
+Group=root
 WorkingDirectory=/usr/local/bin
-StandardOutput=journal
-StandardError=journal
+StandardOutput=append:/var/log/adsbhub.log
+StandardError=append:/var/log/adsbhub.log
 SyslogIdentifier=adsbhub
 
 [Install]
