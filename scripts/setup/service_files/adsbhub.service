@@ -1,0 +1,20 @@
+[Unit]
+Description=ADS-B Hub data feeder
+After=network.target rc-local.service dump1090.service
+Requires=dump1090.service
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/adsbhub.sh
+Restart=always
+RestartSec=5
+User=root
+Group=root
+WorkingDirectory=/usr/local/bin
+StandardOutput=append:/var/log/adsbhub.log
+StandardError=append:/var/log/adsbhub.log
+SyslogIdentifier=adsbhub
+
+[Install]
+WantedBy=multi-user.target

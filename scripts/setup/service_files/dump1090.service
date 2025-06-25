@@ -1,0 +1,19 @@
+[Unit]
+Description=dump1090 ADS-B decoder
+After=network.target rc-local.service
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/dump1090 --net
+Restart=always
+RestartSec=5
+User=root
+Group=root
+WorkingDirectory=/usr/local/bin
+StandardOutput=append:/var/log/dump1090.log
+StandardError=append:/var/log/dump1090.log
+SyslogIdentifier=dump1090
+
+[Install]
+WantedBy=multi-user.target
